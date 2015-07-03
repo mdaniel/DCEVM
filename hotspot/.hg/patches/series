@@ -1,3 +1,9 @@
+# fix a clang compilation error
+fix-relocInfo-signature.patch #+jdk7u79-b02
+
+# remove pre-compiled headers, which clang does not support
+no-pch.patch #+jdk7u79-b02
+
 # Change distribution name
 distro-name.patch
 

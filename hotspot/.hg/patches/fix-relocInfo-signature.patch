@@ -1,0 +1,20 @@
+# HG changeset patch
+# Parent  96a6689d2ae8925979a3e36f3435f4dbaaff1c20
+Fix relocInfo default arg for clang
+
+With this initializer, clang emits an error because the signature on line 469
+doesn't match it. Since initializing an int to zero is the default anyway,
+square up the signatures by removing the default arg construct.
+
+diff -r 96a6689d2ae8 -r 574753666a66 src/share/vm/code/relocInfo.hpp
+--- a/src/share/vm/code/relocInfo.hpp	Fri Jul 03 11:10:21 2015 -0700
++++ b/src/share/vm/code/relocInfo.hpp	Fri Jul 03 11:47:00 2015 -0700
+@@ -371,7 +371,7 @@
+   // "immediate" in the prefix header word itself.  This optimization
+   // is invisible outside this module.)
+ 
+-  inline friend relocInfo prefix_relocInfo(int datalen = 0);
++  inline friend relocInfo prefix_relocInfo(int datalen);
+ 
+  protected:
+   // an immediate relocInfo optimizes a prefix with one 10-bit unsigned value

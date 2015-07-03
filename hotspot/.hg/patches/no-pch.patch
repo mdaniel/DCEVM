@@ -1,0 +1,12 @@
+diff -r ecc2d4f5abc9 make/bsd/makefiles/gcc.make
+--- a/make/bsd/makefiles/gcc.make	Fri Jul 03 10:46:03 2015 -0700
++++ b/make/bsd/makefiles/gcc.make	Fri Jul 03 10:50:39 2015 -0700
+@@ -215,7 +215,7 @@
+ 
+ # Flags for generating make dependency flags.
+ ifneq ("${CC_VER_MAJOR}", "2")
+-DEPFLAGS = -fpch-deps -MMD -MP -MF $(DEP_DIR)/$(@:%=%.d)
++DEPFLAGS = #clang: -fpch-deps -MMD -MP -MF $(DEP_DIR)/$(@:%=%.d)
+ endif
+ 
+ # -DDONT_USE_PRECOMPILED_HEADER will exclude all includes in precompiled.hpp.
